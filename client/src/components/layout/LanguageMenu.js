@@ -23,7 +23,7 @@ const LanguageMenu = ({ id }) => {
                         style={langStyle}
                         onClick={() => changeLanguage("en")}
                     >
-                        English <img src={flag_en} style={flagStyle} />
+                        English <img src={flag_en} style={flagStyle} alt="" />
                     </a>
                 </li>
                 <li>
@@ -33,7 +33,7 @@ const LanguageMenu = ({ id }) => {
                         style={langStyle}
                         onClick={() => changeLanguage("de")}
                     >
-                        Deutsch <img src={flag_de} style={flagStyle} />
+                        Deutsch <img src={flag_de} style={flagStyle} alt="" />
                     </a>
                 </li>
                 <li>
@@ -43,7 +43,7 @@ const LanguageMenu = ({ id }) => {
                         style={langStyle}
                         onClick={() => changeLanguage("id")}
                     >
-                        Bahasa Indonesia <img src={flag_id} style={flagStyle} />
+                        Bahasa Indonesia <img src={flag_id} style={flagStyle} alt="" />
                     </a>
                 </li>
             </ul>

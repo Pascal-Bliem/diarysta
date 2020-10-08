@@ -1,11 +1,9 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import Sidenav from "./Sidenav";
 import LanguageMenu from "./LanguageMenu";
-import LocaleContext from "../../context/locale/localeContext";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
-  const localeContext = useContext(LocaleContext);
-  const { translations: t } = localeContext;
 
   return (
     <Fragment>
@@ -13,7 +11,7 @@ const Navbar = () => {
       <nav className="green lighten-1">
         <div className="nav-wrapper">
           <a href="/" className="brand-logo" style={{ padding: "0 20px" }}>
-            Diarysta - {t.welcome}
+            Diarysta
           </a>
           <a href="#!" data-target="mobile-sidenav" className="sidenav-trigger">
             <i className="material-icons">menu</i>
@@ -22,24 +20,7 @@ const Navbar = () => {
             className="right hide-on-med-and-down"
             style={{ padding: "0 20px" }}
           >
-            <li>
-              <a href="sass.html">Sass</a>
-            </li>
-            <li>
-              <a href="badges.html">Components</a>
-            </li>
-            <li>
-              <a href="collapsible.html">Javascript</a>
-            </li>
-            <li>
-              <a
-                className="dropdown-trigger"
-                href="#!"
-                data-target="dropdown-locale-nav"
-              >
-                Language<i className="material-icons right">arrow_drop_down</i>
-              </a>
-            </li>
+            <NavLinks dropdownTarget="dropdown-locale-nav" />
           </ul>
         </div>
       </nav>
@@ -47,7 +28,6 @@ const Navbar = () => {
       <Sidenav id="mobile-sidenav" />
       {/* This is the language dropdown for the navbar */}
       <LanguageMenu id="dropdown-locale-nav" />
-
       {/* This is the language dropdown for the side-nav */}
       <LanguageMenu id="dropdown-locale-sidenav" />
     </Fragment>

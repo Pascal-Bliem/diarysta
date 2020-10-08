@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import allTranslations from "../../utils/translations";
 import LocaleContext from "./localeContext";
 import localeReducer from "./localeReducer";
