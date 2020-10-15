@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import allTranslations from "../../utils/translations";
+import allTranslations from "../../config/translations";
 import LocaleContext from "./localeContext";
 import localeReducer from "./localeReducer";
 import {

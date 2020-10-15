@@ -55,46 +55,55 @@ const Login = (props) => {
 
     return (
         <div className="row">
-            <h2 className="center">{t.login}</h2>
-            <form className="col s12" onSubmit={onSubmit}>
+            <div className="col s12 m10 l8 push-m1 push-l2">
                 <div className="row">
-                    <div className="col s12">
-                        <input
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                            required
-                            className="validate"
-                            placeholder={t.enter_your_email}
-                        />
-                        <label htmlFor="email">{t.email}</label>
+                    <h2 className="center">{t.login}</h2>
+                    <form className="col s12" onSubmit={onSubmit}>
+                        <div className="row">
+                            <div className="col s12">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={onChange}
+                                    required
+                                    className="validate"
+                                    placeholder={t.enter_your_email}
+                                />
+                                <label htmlFor="email">{t.email}</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s12">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    value={password}
+                                    onChange={onChange}
+                                    required
+                                    minLength="6"
+                                    className="validate"
+                                    placeholder={t.enter_your_password}
+                                />
+                                <label htmlFor="password">{t.password}</label>
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            value="Register"
+                            className="btn-large waves-effect waves-light green lighten-1"
+                            style={{ width: "100%", marginTop: "30px", marginBottom: "20px" }}
+                        >
+                            {t.login}
+                        </button>
+                    </form>
+                    <div className="row center-align">
+                        <div className="col s12">
+                            {t.not_yet_account} <a href="/register">{t.register}</a>.
+                        </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col s12">
-                        <input
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                            required
-                            minLength="6"
-                            className="validate"
-                            placeholder={t.enter_your_password}
-                        />
-                        <label htmlFor="password">{t.password}</label>
-                    </div>
-                </div>
-                <button
-                    type="submit"
-                    value="Register"
-                    className="btn-large waves-effect waves-light green lighten-1"
-                    style={{ width: "100%", marginTop: "30px" }}
-                >
-                    {t.login}
-                </button>
-            </form>
+            </div>
         </div>
     );
 };

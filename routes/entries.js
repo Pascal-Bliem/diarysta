@@ -50,7 +50,7 @@ router.post("/", [auth,
         res.json(entry);
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server error while adding new entry.");
+        res.status(500).json({ message: "Server error while adding new entry." });
     }
 });
 
@@ -87,7 +87,7 @@ router.put("/:id", [auth,
         res.json(entry);
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server error while updating an entry.");
+        res.status(500).json({ message: "Server error while updating an entry." });
     }
 });
 
@@ -111,7 +111,7 @@ router.delete("/:id", auth, async (req, res) => {
         res.json({ message: "Entry removed" });
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server error while deleting entry.");
+        res.status(500).json({ message: "Server error while deleting entry." });
     }
 });
 

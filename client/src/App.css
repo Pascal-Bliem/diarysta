@@ -1,0 +1,59 @@
+/* background image with opacity */
+.private-page::after {
+  content: "";
+  background: url("./utils/wallpaper.png");
+  opacity: 0.15;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;   
+}
+
+.entry-filter::placeholder {
+  color: rgb(88, 88, 88);
+}
+
+/* transition animations for entries*/
+.entry-item-enter {
+  opacity: 0;
+}
+
+.entry-item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.entry-item-exit {
+  opacity: 1;
+}
+
+.entry-item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+/* Media queries for mobile devices */
+@media only screen and (max-width: 900px) {
+    .material-icons.medium {
+        font-size: 2.25em;
+      }
+      .material-icons.large.center,
+    .material-icons.large {
+      font-size: 3.5em;
+      
+    }
+    .material-icons.large.center {
+        transform: translateX(-15%);
+    }
+    .btn-floating.btn-large{
+        transform: scale(1.2)
+    }
+    .btn-floating.btn-large .material-icons{
+        transform: scale(0.8)
+    }
+    .card-title span {
+        font-size: 0.8em;
+    }
+  }

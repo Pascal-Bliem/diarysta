@@ -7,23 +7,25 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      {/* This is the main top navbar */}
-      <nav className="green lighten-1">
-        <div className="nav-wrapper">
-          <a href="/" className="brand-logo" style={{ padding: "0 20px" }}>
-            Diarysta
+      <div class="navbar-fixed">
+        {/* This is the main top navbar */}
+        <nav className="green lighten-1">
+          <div className="nav-wrapper">
+            <a href="/" className="brand-logo" style={{ padding: "0 20px" }}>
+              Diarysta
           </a>
-          <a href="#!" data-target="mobile-sidenav" className="sidenav-trigger">
-            <i className="material-icons">menu</i>
-          </a>
-          <ul
-            className="right hide-on-med-and-down"
-            style={{ padding: "0 20px" }}
-          >
-            <NavLinks dropdownTarget="dropdown-locale-nav" />
-          </ul>
-        </div>
-      </nav>
+            <a href="#!" data-target="mobile-sidenav" className="sidenav-trigger">
+              <i className="material-icons">menu</i>
+            </a>
+            <ul
+              className="right hide-on-med-and-down"
+              style={{ padding: "0 20px" }}
+            >
+              <NavLinks dropdownTarget="dropdown-locale-nav" />
+            </ul>
+          </div>
+        </nav>
+      </div>
       {/* This is the side-nav for medium and small devices */}
       <Sidenav id="mobile-sidenav" />
       {/* This is the language dropdown for the navbar */}

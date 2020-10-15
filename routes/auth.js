@@ -18,7 +18,7 @@ router.get("/", auth, async (req, res) => {
         res.json(user)
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server error while getting logged-in user.");
+        res.status(500).json({ message: "Server error while getting logged-in user." });
     }
 });
 

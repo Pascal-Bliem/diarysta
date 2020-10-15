@@ -54,75 +54,84 @@ const Register = (props) => {
 
   return (
     <div className="row">
-      <h2 className="center">{t.register}</h2>
-      <form className="col s12" onSubmit={onSubmit}>
+      <div className="col s12 m10 l8 push-m1 push-l2">
         <div className="row">
-          <div className="col s12">
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={onChange}
-              required
-              className="validate"
-              placeholder={t.enter_your_name}
-            />
-            <label htmlFor="name">{t.name}</label>
+          <h2 className="center">{t.register}</h2>
+          <form className="col s12" onSubmit={onSubmit}>
+            <div className="row">
+              <div className="col s12">
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={onChange}
+                  required
+                  className="validate"
+                  placeholder={t.enter_your_name}
+                />
+                <label htmlFor="name">{t.name}</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12">
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={onChange}
+                  required
+                  className="validate"
+                  placeholder={t.enter_your_email}
+                />
+                <label htmlFor="email">{t.email}</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12">
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={onChange}
+                  required
+                  minLength="6"
+                  className="validate"
+                  placeholder={t.enter_your_password}
+                />
+                <label htmlFor="password">{t.password}</label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12">
+                <input
+                  type="password"
+                  name="password2"
+                  value={password2}
+                  onChange={onChange}
+                  required
+                  minLength="6"
+                  className="validate"
+                  placeholder={t.confirm_your_password}
+                />
+                <label htmlFor="password2">{t.confirm_password}</label>
+              </div>
+            </div>
+            <button
+              type="submit"
+              value="Register"
+              className="btn-large waves-effect waves-light green lighten-1"
+              style={{ width: "100%", marginTop: "30px", marginBottom: "20px" }}
+            >
+              {t.register}
+            </button>
+          </form>
+          <div className="row center-align">
+            <div className="col s12">
+              {t.already_got_account} <a href="/login">{t.login}</a>.
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col s12">
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={onChange}
-              required
-              className="validate"
-              placeholder={t.enter_your_email}
-            />
-            <label htmlFor="email">{t.email}</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s12">
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={onChange}
-              required
-              minLength="6"
-              className="validate"
-              placeholder={t.enter_your_password}
-            />
-            <label htmlFor="password">{t.password}</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s12">
-            <input
-              type="password"
-              name="password2"
-              value={password2}
-              onChange={onChange}
-              required
-              minLength="6"
-              className="validate"
-              placeholder={t.confirm_your_password}
-            />
-            <label htmlFor="password2">{t.confirm_password}</label>
-          </div>
-        </div>
-        <button
-          type="submit"
-          value="Register"
-          className="btn-large waves-effect waves-light green lighten-1"
-          style={{ width: "100%", marginTop: "30px" }}
-        >
-          {t.register}
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
