@@ -62,6 +62,8 @@ export default {
         update: "Update",
         // entry filter
         search_entries: "Search in entries ...",
+        // calendar page
+        pick_date: "Pick a date",
     },
     de: {
         welcome: "Willkommen bei Diarysta! 🇩🇪",
@@ -117,6 +119,7 @@ export default {
         edit_entry: "Eintrag bearbeiten",
         update: "Aktualisieren",
         search_entries: "Einträge durchsuchen ...",
+        pick_date: "Wähle ein Datum",
     },
     id: {
         welcome: "Selamat datang di Diarysta!",
@@ -170,7 +173,8 @@ export default {
         yes: "Iya",
         no: "Tidak",
         edit_entry: "Edit Entri",
-        update: "Memperbarui",
+        update: "Memperbaharui",
         search_entries: "Cari di entri ...",
+        pick_date: "Memilih tanggal",
     }
 };

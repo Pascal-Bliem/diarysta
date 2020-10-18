@@ -57,3 +57,19 @@
         font-size: 0.8em;
     }
   }
+
+/* Modifications to the react-calendar default style */
+.react-calendar {
+  width: 500px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px 2px rgba(102, 187, 106, 0.2);
+}
+
+.react-calendar__tile--active {
+  background: rgb(102, 187, 106);
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: rgb(116, 211, 121);
+}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from "prop-types";
 import M from "materialize-css/dist/js/materialize.min.js";
 import Activities from "./Activities";
@@ -7,9 +7,11 @@ import LocaleContext from "../../context/locale/localeContext";
 import EntryContext from "../../context/entry/entryContext";
 
 // the id prop represents which modal this component actually
-// is and will either be "addEntryToday" of "addEntryYesterday";
-// the initialDate prop corresponds to that
-const AddEntry = ({ id, initialDate }) => {
+// is and will either be "addEntryToday", "addEntryYesterday",
+// or "addEntryCalendar". The initialDate prop corresponds to that.
+// The (set)calendarDate props are optional and only get passed when
+// this component is used from withing the Calendar page.
+const AddEntry = ({ id, initialDate, calendarDate, setCalendarDate }) => {
     const localeContext = useContext(LocaleContext);
     const { translations: t } = localeContext;
 
@@ -17,17 +19,32 @@ const AddEntry = ({ id, initialDate }) => {
     const { addEntry } = entryContext;
 
     // states for the individual constituents of an entry
-    const [date, setDate] = useState(initialDate);
-    let formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
+    const [date, setDate] = useState(calendarDate || initialDate);
     const [mood, setMood] = useState(null);
     const [activities, setActivities] = useState([]);
     const [note, setNote] = useState("");
+
+    // In case this component is used from within the calendar
+    // page and the selected date in the calendar is updated,
+    // this useEffect() updates the date in the date-input of
+    // this component accordingly.
+    useEffect(() => {
+        const setCalendarDate = () => {
+            if (calendarDate) {
+                setDate(calendarDate);
+            }
+        };
+        setCalendarDate();
+    }, [calendarDate, date]);
 
     const onDateChange = (e) => {
         const selectedDate = new Date(e.target.value);
         if (selectedDate > new Date()) {
             M.toast({ html: t.date_in_future, classes: "red lighten-3" });
         } else {
+            if (setCalendarDate) {
+                setCalendarDate(selectedDate);
+            }
             setDate(selectedDate);
         }
     }
@@ -58,7 +75,13 @@ const AddEntry = ({ id, initialDate }) => {
                         <h6 className="left">{t.date}</h6>
                     </div>
                     <div className="row">
-                        <input type="date" className="" name="date" value={formattedDate} onChange={e => onDateChange(e)} />
+                        <input
+                            type="date"
+                            className=""
+                            name="date"
+                            // value has to be passed as string in the format "YYYY-MM-DD"
+                            value={`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`}
+                            onChange={e => onDateChange(e)} />
                     </div>
                     <Mood id={id} mood={mood} setMood={setMood} />
                     <Activities id={id} activities={activities} setActivities={setActivities} />
@@ -83,7 +106,9 @@ const AddEntry = ({ id, initialDate }) => {
 
 AddEntry.propTypes = {
     id: PropTypes.string.isRequired,
-    initialDate: PropTypes.instanceOf(Date).isRequired
+    initialDate: PropTypes.instanceOf(Date).isRequired,
+    calendarDate: PropTypes.instanceOf(Date),
+    setCalendarDate: PropTypes.func,
 }
 
 const modalStyle = {

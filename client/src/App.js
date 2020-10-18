@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
+import 'react-calendar/dist/Calendar.css';
 import "./App.css";
 import setAuthToken from "./utils/setAuthToken";
 import PrivateRoute from "./components/routing/PrivateRoute";

@@ -11,7 +11,7 @@ const Stats = () => {
   }, []);
 
   return (
-    <div>
+    <div className="private-page">
       <h1>This is the Stats page</h1>
     </div>
   );

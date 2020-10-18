@@ -45,12 +45,15 @@ const NavLinks = ({ dropdownTarget }) => {
         </Link>
       </li>
       <li>
-        <Link to="/calendar">
+        {/* I had to replace the <Link /> with an <a /> because for whatever reason
+        some JS to open a modal didn't work anymore if I navigate to the Calendar page
+        using the react-router <Link /> component. Weird. */}
+        <a href="/calendar">
           <i className="material-icons tiny" style={iconStyle}>
             event
           </i>{" "}
           {t.calendar}
-        </Link>
+        </a>
       </li>
       <li>
         <Link to="/stats">

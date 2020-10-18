@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <div class="navbar-fixed">
+      <div className="navbar-fixed">
         {/* This is the main top navbar */}
         <nav className="green lighten-1">
           <div className="nav-wrapper">
