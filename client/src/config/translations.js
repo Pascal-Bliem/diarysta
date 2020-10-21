@@ -64,6 +64,18 @@ export default {
         search_entries: "Search in entries ...",
         // calendar page
         pick_date: "Pick a date",
+        // stats page
+        diary_stats: "Your diary's statistics",
+        // mood chart
+        mood_chart: "Mood Chart",
+        days: "days",
+        // mood count
+        mood_count: "Mood Count",
+        // days in row
+        days_in_row: "Days in a row",
+        longest_chain: "Longest Chain",
+        // Average daily mood
+        average_daily_mood: "Average Daily Mood",
     },
     de: {
         welcome: "Willkommen bei Diarysta! 🇩🇪",
@@ -120,6 +132,13 @@ export default {
         update: "Aktualisieren",
         search_entries: "Einträge durchsuchen ...",
         pick_date: "Wähle ein Datum",
+        diary_stats: "Deine Tagebuch-Statistiken",
+        mood_chart: "Stimmungsgraph",
+        days: "Tage",
+        mood_count: "Stimmungszähler",
+        days_in_row: "Tage am Stück",
+        longest_chain: "Längste Serie",
+        average_daily_mood: "Durchschnittsstimmung pro Tag",
     },
     id: {
         welcome: "Selamat datang di Diarysta!",
@@ -176,5 +195,12 @@ export default {
         update: "Memperbaharui",
         search_entries: "Cari di entri ...",
         pick_date: "Memilih tanggal",
+        diary_stats: "Statistik buku harianmu",
+        mood_chart: "Grafik suasana hati",
+        days: "hari",
+        mood_count: "Hitung suasana hati",
+        days_in_row: "Hari berturut2",
+        longest_chain: "Seri terpanjang",
+        average_daily_mood: "Suasana hati rata2 per hari",
     }
 };

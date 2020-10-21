@@ -11,6 +11,7 @@
   z-index: -1;   
 }
 
+/* the entry filter search bar */
 .entry-filter::placeholder {
   color: rgb(88, 88, 88);
 }
@@ -55,6 +56,9 @@
     }
     .card-title span {
         font-size: 0.8em;
+    }
+    .time-range-radio-label{
+      transform: scale(0.1);
     }
   }
 
