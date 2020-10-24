@@ -37,6 +37,8 @@ const Register = (props) => {
   //   update user fields with whatever changes in the form
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
+  const [termsChecked, setTermsChecked] = useState(false);
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (name === "") {
@@ -47,6 +49,8 @@ const Register = (props) => {
       M.toast({ html: t.please_enter_password, classes: "red lighten-3" });
     } else if (password !== password2) {
       M.toast({ html: t.passwords_no_match, classes: "red lighten-3" });
+    } else if (!termsChecked) {
+      M.toast({ html: t.must_agree, classes: "red lighten-3" });
     } else {
       register({ name, email, password });
     }
@@ -116,6 +120,12 @@ const Register = (props) => {
                 <label htmlFor="password2">{t.confirm_password}</label>
               </div>
             </div>
+            <p>
+              <label>
+                <input type="checkbox" checked={termsChecked} onChange={() => setTermsChecked(!termsChecked)} />
+                <span>{t.read_agree} <a href="/about">{t.terms_and_data}</a>.</span>
+              </label>
+            </p>
             <button
               type="submit"
               value="Register"

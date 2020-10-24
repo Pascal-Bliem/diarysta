@@ -2,12 +2,13 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from "prop-types";
 import M from "materialize-css/dist/js/materialize.min.js";
 import moodConfig from "../../config/moods";
+import activityConfig from "../../config/activities";
 import LocaleContext from "../../context/locale/localeContext";
 import EntryContext from "../../context/entry/entryContext";
 
 const EntryItem = ({ _id, date, mood, activities, note }) => {
     const localeContext = useContext(LocaleContext);
-    const { translations: t } = localeContext;
+    const { locale, translations: t } = localeContext;
 
     const entryContext = useContext(EntryContext);
     const { deleteEntry, setCurrent } = entryContext;
@@ -44,9 +45,10 @@ const EntryItem = ({ _id, date, mood, activities, note }) => {
                                 <span style={{ float: "right" }}>{t[`day_${date.getDay()}`]}{`, ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</span>
                             </span>
                             {activities.map((activity, index) => {
+                                const { name, icon } = activityConfig.filter(ac => ac.idString === activity)[0];
                                 return (
                                     <div key={index} className="chip green lighten-2 white-text">
-                                        {(activity.slice(0, 1).toUpperCase() + activity.slice(1)).replace(/-/gi, " ")}
+                                        <i className={icon} style={{ pointerEvents: "none" }}></i> {name[locale]}
                                     </div>
                                 )
                             })}

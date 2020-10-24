@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import PropTypes from "prop-types";
+import activityConfig from "../../config/activities";
 import LocaleContext from "../../context/locale/localeContext";
 
 // a little note here: since this Activities component is reused in
@@ -10,7 +11,7 @@ import LocaleContext from "../../context/locale/localeContext";
 // within the right parent components are updated.
 const Activities = ({ id, activities, setActivities }) => {
       const localeContext = useContext(LocaleContext);
-      const { translations: t } = localeContext;
+      const { locale, translations: t } = localeContext;
 
       useEffect(() => {
             activities.forEach(activity => {
@@ -21,7 +22,7 @@ const Activities = ({ id, activities, setActivities }) => {
 
       const onActivityClick = (e) => {
             const idActivity = e.target.id;
-            const element = document.getElementById(idActivity);
+            let element = document.getElementById(idActivity);
             //  update appearance
             element.classList.toggle("green");
             element.classList.toggle("lighten-2");
@@ -39,39 +40,80 @@ const Activities = ({ id, activities, setActivities }) => {
                   <div className="row">
                         <h6 className="left">{t.activities}</h6>
                   </div>
+                  <div className="row">
+                        <label htmlFor="health" className="left">{t.health}</label>
+                  </div>
                   <div className="row" id="health">
-                        <div className="chip" id={`${id}-meditation`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Meditation
-                    </div>
-                        <div className="chip" id={`${id}-yoga`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Yoga
-                    </div>
-                        <div className="chip" id={`${id}-sports`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Sports
-                    </div>
-                        <div className="chip" id={`${id}-good-sleep`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Good Sleep
-                    </div>
+                        {activityConfig
+                              .filter(activity => activity.category === "health")
+                              .map(activity => {
+                                    return (
+                                          <div key={activity.idString} className="chip center" id={`${id}-${activity.idString}`} onClick={e => onActivityClick(e)} style={chipsStyle} >
+                                                <i className={activity.icon} style={{ pointerEvents: "none" }}></i> {activity.name[locale]}
+                                          </div>
+                                    );
+                              })
+                        }
                   </div>
                   <div className="row">
-                        <label htmlFor="health" className="left">Health</label>
+                        <label htmlFor="hobbies" className="left">{t.hobbies}</label>
                   </div>
-                  <div className="row" id="studying">
-                        <div className="chip" id={`${id}-language`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Language
-              </div>
-                        <div className="chip" id={`${id}-programming`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Programming
-              </div>
-                        <div className="chip" id={`${id}-music`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Music
-              </div>
-                        <div className="chip" id={`${id}-business`} onClick={e => onActivityClick(e)} style={chipsStyle} >
-                              Business
-              </div>
+                  <div className="row" id="hobbies">
+                        {activityConfig
+                              .filter(activity => activity.category === "hobbies")
+                              .map(activity => {
+                                    return (
+                                          <div key={activity.idString} className="chip" id={`${id}-${activity.idString}`} onClick={e => onActivityClick(e)} style={chipsStyle} >
+                                                <i className={activity.icon} style={{ pointerEvents: "none" }}></i> {activity.name[locale]}
+                                          </div>
+                                    );
+                              })
+                        }
                   </div>
                   <div className="row">
-                        <label htmlFor="studying" className="left">Studying</label>
+                        <label htmlFor="social" className="left">{t.social}</label>
+                  </div>
+                  <div className="row" id="social">
+                        {activityConfig
+                              .filter(activity => activity.category === "social")
+                              .map(activity => {
+                                    return (
+                                          <div key={activity.idString} className="chip" id={`${id}-${activity.idString}`} onClick={e => onActivityClick(e)} style={chipsStyle} >
+                                                <i className={activity.icon} style={{ pointerEvents: "none" }}></i> {activity.name[locale]}
+                                          </div>
+                                    );
+                              })
+                        }
+                  </div>
+                  <div className="row">
+                        <label htmlFor="food" className="left">{t.food}</label>
+                  </div>
+                  <div className="row" id="food">
+                        {activityConfig
+                              .filter(activity => activity.category === "food")
+                              .map(activity => {
+                                    return (
+                                          <div key={activity.idString} className="chip" id={`${id}-${activity.idString}`} onClick={e => onActivityClick(e)} style={chipsStyle} >
+                                                <i className={activity.icon} style={{ pointerEvents: "none" }}></i> {activity.name[locale]}
+                                          </div>
+                                    );
+                              })
+                        }
+                  </div>
+                  <div className="row">
+                        <label htmlFor="chores" className="left">{t.chores}</label>
+                  </div>
+                  <div className="row" id="chores">
+                        {activityConfig
+                              .filter(activity => activity.category === "chores")
+                              .map(activity => {
+                                    return (
+                                          <div key={activity.idString} className="chip" id={`${id}-${activity.idString}`} onClick={e => onActivityClick(e)} style={chipsStyle} >
+                                                <i className={activity.icon} style={{ pointerEvents: "none" }}></i> {activity.name[locale]}
+                                          </div>
+                                    );
+                              })
+                        }
                   </div>
             </Fragment>
       )

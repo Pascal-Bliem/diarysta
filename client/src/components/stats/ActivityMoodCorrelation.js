@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import Chart from "chart.js";
 import moodConfig from "../../config/moods";
+import activityConfig from "../../config/activities";
 import LocaleContext from "../../context/locale/localeContext";
 import EntryContext from "../../context/entry/entryContext";
 
-const AverageDailyMood = () => {
+const ActivityMoodCorrelation = () => {
     const localeContext = useContext(LocaleContext);
-    const { translations: t } = localeContext;
+    const { locale, translations: t } = localeContext;
 
     const entryContext = useContext(EntryContext);
     const { entries } = entryContext;
@@ -22,31 +23,36 @@ const AverageDailyMood = () => {
         const calculateData = () => {
             const cutoffDate = new Date()
             cutoffDate.setDate(cutoffDate.getDate() - Number(timeRange));
-            const labels = [];
-            const data = [];
+            const dataset = [];
 
             const dateFiltered = entries.filter(entry => new Date(entry.date) >= cutoffDate)
-            // 0 represents sunday, hence it goes to the back
-            const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];
             // calculates floored average mood, set zero if mood doesn't occur at all
-            const averageMood = (arr) => arr.length > 0 ? Math.floor(arr.reduce((sum, { mood }) => sum + mood, 0) / arr.length) + 1 : 0;
-            // for each day of the week, get the average mood of the corresponding entires
-            daysOfWeek.forEach(day => {
-                labels.push(day);
-                data.push(
-                    averageMood(
-                        dateFiltered.filter(entry => new Date(entry.date).getDay() === day)
-                    )
+            const averageMood = (arr) => arr.length > 0 ? Math.floor(arr.reduce((sum, mood) => sum + mood, 0) / arr.length) + 1 : 0;
+            // counts the occurrences of each activity
+            activityConfig.forEach(activity => {
+                const dataPoint = {}
+                dataPoint.label = activity.name[locale];
+                dataPoint.data = averageMood(
+                    dateFiltered
+                        .filter(entry => entry.activities.includes(activity.idString))
+                        .map(entry => entry.mood)
                 );
+                dataset.push(dataPoint);
             })
-
+            // sort w.r.t. the occurrences
+            dataset.sort((a, b) => (a.data < b.data) ? 1 : ((a.data > b.data) ? -1 : 0));
+            // split into labels and data arrays
+            const labels = dataset.map(dataPoint => dataPoint.label);
+            const data = dataset.map(dataPoint => dataPoint.data);
 
             return { labels, data };
         }
-        const { data } = calculateData();
+        const { labels, data } = calculateData();
+        console.log(labels)
+        console.log(data)
 
         // get canvas context
-        const ctx = document.getElementById('average-daily-mood').getContext('2d');
+        const ctx = document.getElementById('activity-mood-correlation').getContext('2d');
         // 
         new Chart(ctx, {
             // The type of chart we want to create
@@ -55,7 +61,7 @@ const AverageDailyMood = () => {
             // The data for our dataset
             data: {
                 // 0 represents sunday, hence it goes to the back
-                labels: [t.day_1, t.day_2, t.day_3, t.day_4, t.day_5, t.day_6, t.day_0,],
+                labels: labels,
                 datasets: [{
                     backgroundColor: data.map(value => value !== 0 ? moodConfig[String(value - 1)].color : "#fff"),  //"rgba(149, 102, 187, 0.4)",
                     borderColor: data.map(value => value !== 0 ? moodConfig[String(value - 1)].colorHex : "#fff"),
@@ -119,7 +125,7 @@ const AverageDailyMood = () => {
                 }
             }
         });
-    }, [timeRange, entries, t])
+    }, [timeRange, entries, locale])
 
 
     return (
@@ -127,9 +133,9 @@ const AverageDailyMood = () => {
             <div className="col s12 m8 l6 push-m2 push-l3">
                 <div className="card">
                     <div className="card-content">
-                        <span className="card-title">{t.average_daily_mood}</span>
+                        <span className="card-title">{t.average_activity_mood}</span>
                         {/* This canvas element is the actual chart */}
-                        <canvas id="average-daily-mood" />
+                        <canvas id="activity-mood-correlation" />
                     </div>
                     <div className="card-action center-align">
                         <form action="#">
@@ -170,4 +176,5 @@ const AverageDailyMood = () => {
 const radioStyle = {
     paddingRight: "13px"
 }
-export default AverageDailyMood
+
+export default ActivityMoodCorrelation;

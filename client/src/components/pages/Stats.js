@@ -7,6 +7,8 @@ import DaysInRow from "../stats/DaysInRow";
 import MoodChart from "../stats/MoodChart";
 import AverageDailyMood from "../stats/AverageDailyMood";
 import MoodCount from "../stats/MoodCount";
+import ActivityCount from "../stats/ActivityCount";
+import ActivityMoodCorrelation from "../stats/ActivityMoodCorrelation";
 
 
 const Stats = () => {
@@ -37,16 +39,10 @@ const Stats = () => {
       ) : <div>
           <DaysInRow />
           <MoodChart />
+          <ActivityCount />
+          <ActivityMoodCorrelation />
           <AverageDailyMood />
           <MoodCount />
-          {/* 
-      - days in a row x
-      - mood chart x
-      - mood count x
-      - Average daily mood x
-      - activity count (maybe sort them according to count and use the activity as x-label)
-      - mood-activity-correlation
-       */}
         </div>}
     </div>
   );
