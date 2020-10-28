@@ -18,7 +18,7 @@ const About = () => {
         <p style={paragraphStyle}>{t.terms_statement}</p>
       </div>
 
-      <footer style={{ fontSize: "12px", position: "absolute", bottom: "5px", left: "50%", transform: "translateX(-50%)" }}>Find me on <a href="http://www.pascal-bliem.de" >http://www.pascal-bliem.de</a><br/>Icons on this page made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> and <a href="https://www.flaticon.com/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></footer>
+      <footer style={{ fontSize: "12px", position: "absolute", bottom: "5px", left: "50%", transform: "translateX(-50%)" }}>Find me on <a href="http://www.pascal-bliem.com" >http://www.pascal-bliem.com</a><br/>Icons on this page made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> and <a href="https://www.flaticon.com/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></footer>
     </div>
   );
 };
