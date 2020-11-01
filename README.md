@@ -14,28 +14,29 @@ seconds for it to wake up and make the app available.
 
 ## A tour through the app
 
-You can browse and search all your entries:
+You can browse and search all your entries:  
+
 <img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/entries.png" alt="Read and search your diary entries." width="400">
 
 
-Create new entries by selecting a mood, picking activitites and adding a note:
+Create new entries by selecting a mood, picking activitites and adding a note:  
 <img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/add_entry.png" alt="Add a new entry and select a mood, activities, and a note." style="width: 100%;">
 
 
-Look for, create, update, or delete entries on certain dates on the calendar page:
+Look for, create, update, or delete entries on certain dates on the calendar page:  
 <img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/calendar.png" alt="Look up, create, or delete entries for certain days." style="width: 100%;">
 
 
 Get your personal diary statistiks on the stats page.  
-See how many days in row you added entries and how your mood developed over time:
+See how many days in row you added entries and how your mood developed over time:  
 <img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/moodchart.png" alt="See how many days in row you added entries and how your mood developed over time." style="width: 65%;">
 
 
-See which activities you did how often and what your average mood was when doing these activities:
+See which activities you did how often and what your average mood was when doing these activities:  
 <img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/activitycount.png" alt="See which activities you did how often and what your average mood was when doing these activities." style="width: 65%;">
 
 
-See your average mood per day of the week and your overall mood count:
+See your average mood per day of the week and your overall mood count:  
 <img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/moodcount.png" alt="See your average mood per day of the week and your overall mood count." style="width: 65%;">
 
 
