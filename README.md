@@ -15,7 +15,7 @@ seconds for it to wake up and make the app available.
 ## A tour through the app
 
 You can browse and search all your entries:
-<img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/entries.png" alt="Read and search your diary entries." style="width: 300px;">
+<img src="https://pb-data-blogposts.s3.eu-central-1.amazonaws.com/diarysta-frontend/entries.png" alt="Read and search your diary entries." width="300">
 
 
 Create new entries by selecting a mood, picking activitites and adding a note:
